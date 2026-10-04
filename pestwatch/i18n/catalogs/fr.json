@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "code": "fr",
+    "name": "French",
+    "native_name": "Français",
+    "fallback": "en",
+    "review_status": "draft - needs native-speaker and extension-officer review",
+    "aliases": [
+      "fr",
+      "french",
+      "francais",
+      "kifaransa"
+    ],
+    "decimal": ","
+  },
+  "alert": {
+    "head": "Rouille orangée du caféier signalée dans votre zone.",
+    "reports": {
+      "one": "{n} signalement",
+      "other": "{n} signalements"
+    },
+    "farms": {
+      "one": "d'une exploitation",
+      "other": "de {n} exploitations"
+    },
+    "counts": "{reports} provenant {farms} au cours des {hours} dernières heures.",
+    "risk": "Risque : {level}.",
+    "level": {
+      "HIGH": "ÉLEVÉ",
+      "MEDIUM": "MOYEN",
+      "LOW": "FAIBLE"
+    },
+    "action": {
+      "HIGH": "Inspectez vos caféiers dans les 24 heures.",
+      "MEDIUM": "Inspectez vos caféiers dans les 48 heures.",
+      "LOW": "Surveillez vos caféiers cette semaine."
+    },
+    "tip": "Regardez le dessous des feuilles âgées : taches orange poudreuses. Signalement le plus proche : {km} km.",
+    "tip_own": "Regardez le dessous des feuilles âgées : taches orange poudreuses. Un signalement vient de votre exploitation.",
+    "reply_hint": "Après inspection, répondez 1 si vous avez trouvé de la rouille, 2 sinon.",
+    "forecast_head": "La météo récente a favorisé la rouille du caféier près de chez vous."
+  },
+  "sms": {
+    "template": "PestWatch: Rouille du caféier près de vous. {r} signal./{f} expl. en {h}h. Risque {level}. Inspectez {when}. Répondez 1=trouvé 2=rien",
+    "when": {
+      "HIGH": "sous 24h",
+      "MEDIUM": "sous 48h",
+      "LOW": "cette semaine"
+    },
+    "forecast_template": "PestWatch: Météo favorable à la rouille près de vous. Risque {level}. Inspectez {when}. Répondez 1=trouvé 2=rien"
+  },
+  "voice": {
+    "template": "Bonjour, ici PestWatch. {head} {counts} {risk} {action} {tip} Si vous trouvez de la rouille, tapez 1. Sinon, tapez 2. Pour réécouter, tapez 9. Je répète : {action}"
+  },
+  "reply": {
+    "PEST_FOUND": "Merci. Votre signalement protège vos voisins. Demandez à l'agent de vulgarisation ou à votre coopérative les fongicides homologués et la taille ; ne traitez pas sans conseil.",
+    "NO_PEST": "Merci. Vérifiez à nouveau dans 3 jours.",
+    "HELP": "PestWatch : répondez 1 = rouille trouvée, 2 = rien trouvé, STOP = arrêter les alertes, FR/EN/SW = changer de langue.",
+    "STOP": "Vous ne recevrez plus les alertes PestWatch. Répondez REPRENDRE pour les réactiver.",
+    "START": "Bon retour. Vous recevrez de nouveau les alertes PestWatch.",
+    "LANGUAGE": "Langue réglée sur le français.",
+    "UNKNOWN": "Désolé, nous n'avons pas compris. Répondez AIDE pour les options.",
+    "REFERRAL": "Merci. Votre agriculteur relais et l'agent de vulgarisation ont été prévenus. En attendant, ne traitez pas ; gardez une feuille abîmée pour la leur montrer."
+  },
+  "intents": {
+    "PEST_FOUND": [
+      "1",
+      "oui",
+      "trouve",
+      "jai trouve",
+      "rouille",
+      "taches orange",
+      "poudre orange"
+    ],
+    "NO_PEST": [
+      "2",
+      "non",
+      "rien",
+      "aucune",
+      "aucun",
+      "pas de rouille",
+      "pas trouve",
+      "rien trouve"
+    ],
+    "HELP": [
+      "aide",
+      "menu"
+    ],
+    "STOP": [
+      "stop",
+      "arret",
+      "desabonner"
+    ],
+    "START": [
+      "reprendre",
+      "demarrer",
+      "start"
+    ],
+    "LANGUAGE": [
+      "langue"
+    ],
+    "REFERRAL": [
+      "quelquun de verifier",
+      "verifier mon champ",
+      "agent de vulgarisation",
+      "agriculteur relais"
+    ]
+  },
+  "ui": {
+    "title": "PestWatch Terrain",
+    "online": "En ligne",
+    "offline": "Pas de réseau",
+    "language": "Langue",
+    "my_farm": "Mon exploitation",
+    "connect_once": "Connectez-vous une fois pour charger les exploitations",
+    "near_signal": "Près du signal actuel (démo)",
+    "all_farms": "Toutes les exploitations",
+    "step1": "1 · Photographier la culture",
+    "tap_photo": "Touchez pour photographier une feuille de caféier (dessous)",
+    "tap_again": "Touchez pour photographier une autre feuille",
+    "demo_model": "Sortie du modèle de démo (remplace le modèle TFLite embarqué)",
+    "demo_healthy": "Feuille saine",
+    "demo_early": "Taches de rouille précoces, discrètes",
+    "demo_obvious": "Rouille orange évidente",
+    "no_camera": "Pas d'appareil photo ? Lancer le modèle sans photo (démo)",
+    "step2": "2 · Résultat sur le téléphone (sans internet)",
+    "likely": "Rouille du caféier probable. Votre signalement aide à prévenir les exploitations voisines.",
+    "possible": "Rouille possible, mais incertaine. Seul, ce signal est trop faible ; PestWatch le combine avec les signalements voisins.",
+    "unlikely": "Aucun signe net de rouille. Signaler les feuilles saines compte aussi : cela indique à PestWatch ce qui est normal.",
+    "save": "Enregistrer",
+    "step3": "3 · File d'attente",
+    "no_reports": "Aucun signalement pour l'instant.",
+    "pending": {
+      "one": "{n} signalement en attente de réseau.",
+      "other": "{n} signalements en attente de réseau."
+    },
+    "auto_sync": "Ils seront envoyés automatiquement dès le retour du réseau.",
+    "all_synced": "Tous les signalements sont envoyés.",
+    "sync_now": "Envoyer maintenant",
+    "sync_failed": "Échec de l'envoi ; nouvel essai plus tard.",
+    "queued": "en attente",
+    "synced": "envoyé",
+    "upload_note": "Seul le résultat du modèle (~100 octets) est envoyé, jamais la photo.",
+    "step4": "4 · Ma zone",
+    "no_status": "Pas encore d'état. Envoyez dès que vous avez du réseau.",
+    "quiet": "CALME",
+    "quiet_text": "Aucune maladie inhabituelle signalée près de chez vous.",
+    "watch": "VIGILANCE",
+    "alert_elsewhere": "ALERTE (ailleurs)",
+    "emerging": "Signal émergent près de {village} : {r} signalements de {f} exploitations en 72 h.",
+    "outbreak_near": "Alerte de foyer près de {village} : {r} signalements de {f} exploitations en 72 h.",
+    "live_count": "{n} signalement(s) en direct reçu(s) par le réseau.",
+    "risk_badge": "RISQUE {level}",
+    "step5": "5 · Après inspection",
+    "inspect_q": "Avez-vous trouvé de la rouille sur vos feuilles de caféier ?",
+    "found_btn": "Oui, j'en ai trouvé",
+    "none_btn": "Non, aucune",
+    "message_label": "Ou envoyez un message dans n'importe quelle langue",
+    "message_ph": "ex. : j'ai trouvé de la rouille",
+    "send": "Envoyer",
+    "you": "Vous",
+    "pestwatch": "PestWatch",
+    "classes": {
+      "healthy": "Sain",
+      "leaf_rust": "Rouille orangée du caféier",
+      "leaf_miner": "Mineuse des feuilles",
+      "cercospora": "Cercosporiose",
+      "phoma": "Phoma"
+    },
+    "demo_lookalike": "Mineuse (ressemblante)",
+    "scout_title": "Aidez à vérifier votre zone",
+    "all_clear_badge": "FIN D'ALERTE",
+    "offline_reply": "(réponse donnée sur ce téléphone ; elle sera envoyée dès que vous aurez du réseau)",
+    "last_updated": "Mis à jour {when}. Vous êtes hors ligne : affichage de l'état enregistré.",
+    "not_sure_title": "Pas sûr — demandez à une personne",
+    "not_sure_text": "Le modèle ne peut pas trancher avec cette photo : ne traitez pas sur cette seule base. Montrez la feuille à votre agriculteur relais ou à l'agent de vulgarisation, ou reprenez une photo du dessous de la feuille à la lumière du jour.",
+    "ask_person_btn": "Demander à l'agriculteur relais / à l'agent",
+    "referral_msg": "Merci de demander à quelqu'un de vérifier mon champ"
+  },
+  "all_clear": {
+    "app": "Fin d'alerte : aucun nouveau signalement de rouille du caféier près de chez vous depuis {days} jours. Continuez à vérifier vos caféiers chaque semaine.",
+    "sms": "PestWatch: Fin d'alerte, aucun nouveau signalement de rouille depuis {days} jours. Continuez à vérifier chaque semaine.",
+    "voice": "Bonjour, ici PestWatch. Bonne nouvelle. Aucun nouveau signalement de rouille du caféier près de votre exploitation depuis {days} jours. Continuez à vérifier vos caféiers chaque semaine."
+  },
+  "scout": {
+    "app": "PestWatch a besoin de vous : des signalements inhabituels ont été faits près de chez vous. Vérifiez 10 caféiers aujourd'hui (dessous des feuilles âgées), puis répondez 1 si vous trouvez des taches de rouille ou 2 sinon. Merci de protéger votre communauté.",
+    "sms": "PestWatch: Signalements inhabituels près de vous. Vérifiez 10 caféiers aujourd'hui. Répondez 1=rouille 2=rien. Merci!",
+    "voice": "Bonjour, ici PestWatch. Des signalements inhabituels de rouille du caféier ont été faits près de votre exploitation. Vérifiez 10 caféiers aujourd'hui, sous les feuilles âgées. Si vous trouvez des taches de rouille, tapez 1. Sinon, tapez 2. Merci de protéger votre communauté."
+  },
+  "ussd": {
+    "menu": "PestWatch\n1. Rouille trouvée\n2. Rien trouvé\n3. État de la zone\n4. Langue\n0. Aide",
+    "thanks_found": "Merci. Votre signalement protège vos voisins. Demandez à l'agent les fongicides homologués ; ne traitez pas sans conseil.",
+    "thanks_none": "Merci. Vérifiez à nouveau vos caféiers dans 3 jours.",
+    "status_alert": "ALERTE : rouille du caféier près de vous. Risque {level}. {action}",
+    "status_watch": "VIGILANCE : signalements inhabituels près de vous. Vérifiez 10 caféiers aujourd'hui.",
+    "status_quiet": "Aucune maladie inhabituelle près de chez vous. Continuez à vérifier chaque semaine.",
+    "choose_language": "Choisissez la langue :",
+    "help": "PestWatch vous prévient de la rouille du caféier près de votre exploitation. Rappelez pour signaler, ou répondez à notre SMS par 1 (trouvé) ou 2 (rien).",
+    "invalid": "Choix invalide. Veuillez rappeler.",
+    "unregistered": "Ce numéro n'est pas inscrit à PestWatch. Demandez à votre agent de vulgarisation de vous inscrire."
+  },
+  "voice_menu": {
+    "no_alert": "Bonjour, ici PestWatch. Aucune alerte de rouille du caféier près de votre exploitation pour le moment.",
+    "menu": "Si vous trouvez de la rouille sur vos feuilles de caféier, tapez 1. Sinon, tapez 2. Pour réécouter, tapez 9.",
+    "unregistered": "Bonjour, ici PestWatch. Ce numéro n'est pas inscrit. Demandez à votre agent de vulgarisation de vous inscrire. Au revoir.",
+    "goodbye": "Au revoir."
+  }
+}

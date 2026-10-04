@@ -1,0 +1,6 @@
+{
+  "scan_threshold": 3.2071102844687758,
+  "fusion_alert_p": 0.9506596341047319,
+  "target_fa": 0.1,
+  "n_null": 60
+}

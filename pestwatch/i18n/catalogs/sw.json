@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "code": "sw",
+    "name": "Swahili",
+    "native_name": "Kiswahili",
+    "fallback": "en",
+    "review_status": "draft - needs native-speaker and extension-officer review",
+    "aliases": [
+      "sw",
+      "swahili",
+      "kiswahili",
+      "souahili"
+    ],
+    "decimal": "."
+  },
+  "alert": {
+    "head": "Kutu ya majani ya kahawa imeripotiwa katika eneo lako.",
+    "reports": {
+      "one": "ripoti {n}",
+      "other": "ripoti {n}"
+    },
+    "farms": {
+      "one": "shamba {n}",
+      "other": "mashamba {n}"
+    },
+    "counts": "{reports} kutoka {farms} katika saa {hours} zilizopita.",
+    "risk": "Hatari: {level}.",
+    "level": {
+      "HIGH": "JUU",
+      "MEDIUM": "WASTANI",
+      "LOW": "CHINI"
+    },
+    "action": {
+      "HIGH": "Kagua kahawa yako ndani ya saa 24.",
+      "MEDIUM": "Kagua kahawa yako ndani ya saa 48.",
+      "LOW": "Kagua kahawa yako wiki hii."
+    },
+    "tip": "Angalia upande wa chini wa majani ya zamani kama kuna madoa ya unga wa rangi ya chungwa. Ripoti ya karibu: km {km}.",
+    "tip_own": "Angalia upande wa chini wa majani ya zamani kama kuna madoa ya unga wa rangi ya chungwa. Ripoti moja ni kutoka shamba lako.",
+    "reply_hint": "Baada ya kukagua, jibu 1 ukiona kutu au 2 usipoona.",
+    "forecast_head": "Hali ya hewa ya hivi karibuni imependelea kutu ya kahawa karibu nawe."
+  },
+  "sms": {
+    "template": "PestWatch: Kutu ya kahawa karibu nawe. Ripoti {r}, mashamba {f}, saa {h}. Hatari {level}. Kagua majani {when}. Jibu 1=nimeona 2=sijaona",
+    "when": {
+      "HIGH": "ndani ya saa 24",
+      "MEDIUM": "ndani ya saa 48",
+      "LOW": "wiki hii"
+    },
+    "forecast_template": "PestWatch: Hali ya hewa inapendelea kutu karibu nawe. Hatari {level}. Kagua majani {when}. Jibu 1=nimeona 2=sijaona"
+  },
+  "voice": {
+    "template": "Habari, huyu ni PestWatch. {head} {counts} {risk} {action} {tip} Ukiona kutu, bonyeza 1. Usipoona kutu, bonyeza 2. Kusikiliza tena, bonyeza 9. Narudia: {action}"
+  },
+  "reply": {
+    "PEST_FOUND": "Asante. Ripoti yako inawalinda majirani zako. Muulize afisa wa ugani au chama cha ushirika kuhusu dawa ya kuvu iliyoidhinishwa na kupogoa; usinyunyize kabla ya kupata ushauri.",
+    "NO_PEST": "Asante. Tafadhali kagua tena baada ya siku 3.",
+    "HELP": "PestWatch: jibu 1 = nimeona kutu, 2 = sijaona, STOP = acha ujumbe, SW/EN/FR = badilisha lugha.",
+    "STOP": "Hutapokea tena ujumbe wa PestWatch. Jibu ANZA kuendelea.",
+    "START": "Karibu tena. Utapokea ujumbe wa PestWatch.",
+    "LANGUAGE": "Lugha imebadilishwa kuwa Kiswahili.",
+    "UNKNOWN": "Samahani, hatukuelewa. Jibu MSAADA kwa maelekezo.",
+    "REFERRAL": "Asante. Mkulima kiongozi na afisa wa ugani wameombwa kukagua shamba lako. Hadi hapo, tafadhali usinyunyize dawa; hifadhi jani lililoharibika uwaonyeshe."
+  },
+  "intents": {
+    "PEST_FOUND": [
+      "1",
+      "ndiyo",
+      "ndio",
+      "nimeona",
+      "nimeiona",
+      "kutu",
+      "madoa",
+      "unga wa chungwa"
+    ],
+    "NO_PEST": [
+      "2",
+      "hapana",
+      "sijaona",
+      "sijaiona",
+      "hakuna",
+      "sikuona",
+      "hakuna kutu",
+      "salama"
+    ],
+    "HELP": [
+      "msaada",
+      "saidia",
+      "menyu"
+    ],
+    "STOP": [
+      "acha",
+      "sitisha",
+      "stop"
+    ],
+    "START": [
+      "anza",
+      "endelea",
+      "start"
+    ],
+    "LANGUAGE": [
+      "lugha"
+    ],
+    "REFERRAL": [
+      "kukagua shamba langu",
+      "afisa wa ugani",
+      "mkulima kiongozi",
+      "mtu aje"
+    ]
+  },
+  "ui": {
+    "title": "PestWatch Shambani",
+    "online": "Mtandaoni",
+    "offline": "Hakuna mtandao",
+    "language": "Lugha",
+    "my_farm": "Shamba langu",
+    "connect_once": "Unganisha mara moja kupakua mashamba",
+    "near_signal": "Karibu na ishara ya sasa (onyesho)",
+    "all_farms": "Mashamba yote",
+    "step1": "1 · Piga picha ya zao",
+    "tap_photo": "Gusa kupiga picha ya jani la kahawa (upande wa chini)",
+    "tap_again": "Gusa kupiga picha ya jani jingine",
+    "demo_model": "Matokeo ya modeli ya onyesho (badala ya modeli ya TFLite kwenye simu)",
+    "demo_healthy": "Jani zima",
+    "demo_early": "Madoa hafifu ya mwanzo ya kutu",
+    "demo_obvious": "Kutu ya wazi ya rangi ya chungwa",
+    "no_camera": "Huna kamera? Endesha modeli bila picha (onyesho)",
+    "step2": "2 · Matokeo kwenye simu (bila intaneti)",
+    "likely": "Huenda ni kutu ya majani ya kahawa. Ripoti yako inasaidia kuwaonya majirani.",
+    "possible": "Inawezekana ni kutu, lakini si hakika. Peke yake ni dhaifu; PestWatch inaiunganisha na ripoti za karibu.",
+    "unlikely": "Hakuna dalili wazi za kutu. Kuripoti majani mazima pia ni muhimu: kunaonyesha hali ya kawaida.",
+    "save": "Hifadhi ripoti",
+    "step3": "3 · Foleni ya ripoti",
+    "no_reports": "Bado hakuna ripoti.",
+    "pending": {
+      "one": "Ripoti {n} inasubiri mtandao.",
+      "other": "Ripoti {n} zinasubiri mtandao."
+    },
+    "auto_sync": "Zitatumwa zenyewe ukipata mtandao.",
+    "all_synced": "Ripoti zote zimetumwa.",
+    "sync_now": "Tuma sasa",
+    "sync_failed": "Imeshindwa kutuma; itajaribu tena.",
+    "queued": "inasubiri",
+    "synced": "imetumwa",
+    "upload_note": "Matokeo ya modeli tu (~baiti 100) ndiyo yanatumwa, si picha.",
+    "step4": "4 · Eneo langu",
+    "no_status": "Bado hakuna taarifa. Tuma ukipata mtandao.",
+    "quiet": "SHWARI",
+    "quiet_text": "Hakuna ugonjwa usio wa kawaida wa mazao ulioripotiwa karibu nawe.",
+    "watch": "TAHADHARI",
+    "alert_elsewhere": "ONYO (eneo jingine)",
+    "emerging": "Ishara inajitokeza karibu na {village}: ripoti {r} kutoka mashamba {f} katika saa 72.",
+    "outbreak_near": "Onyo la mlipuko karibu na {village}: ripoti {r} kutoka mashamba {f} katika saa 72.",
+    "live_count": "Ripoti {n} za moja kwa moja zimepokelewa.",
+    "risk_badge": "HATARI {level}",
+    "step5": "5 · Baada ya kukagua",
+    "inspect_q": "Je, umeona kutu kwenye majani ya kahawa?",
+    "found_btn": "Ndiyo, nimeona",
+    "none_btn": "Hapana, sijaona",
+    "message_label": "Au tuma ujumbe kwa lugha yoyote",
+    "message_ph": "mfano: nimeona kutu",
+    "send": "Tuma",
+    "you": "Wewe",
+    "pestwatch": "PestWatch",
+    "classes": {
+      "healthy": "Zima",
+      "leaf_rust": "Kutu ya majani ya kahawa",
+      "leaf_miner": "Funza wa majani",
+      "cercospora": "Madoa ya kahawia (Cercospora)",
+      "phoma": "Madoa ya Phoma"
+    },
+    "demo_lookalike": "Funza wa majani (anayefanana)",
+    "scout_title": "Saidia kukagua eneo lako",
+    "all_clear_badge": "SHWARI",
+    "offline_reply": "(imejibiwa kwenye simu hii; itatumwa ukipata mtandao)",
+    "last_updated": "Imesasishwa {when}. Uko nje ya mtandao: hali iliyohifadhiwa inaonyeshwa.",
+    "not_sure_title": "Sina uhakika — muulize mtu",
+    "not_sure_text": "Modeli haiwezi kutambua vizuri kutoka picha hii, kwa hiyo usinyunyize dawa kwa sababu yake. Mwonyeshe mkulima kiongozi au afisa wa ugani jani hili, au piga picha nyingine ya upande wa chini wa jani mchana.",
+    "ask_person_btn": "Muulize mkulima kiongozi / afisa wa ugani",
+    "referral_msg": "Tafadhali mtu aje kukagua shamba langu"
+  },
+  "all_clear": {
+    "app": "Hali ni shwari: hakuna ripoti mpya za kutu ya kahawa karibu nawe kwa siku {days}. Endelea kukagua miti yako mara moja kwa wiki.",
+    "sms": "PestWatch: Hali shwari karibu nawe, hakuna ripoti mpya za kutu ya kahawa kwa siku {days}. Endelea kukagua kila wiki.",
+    "voice": "Habari, huyu ni PestWatch. Habari njema. Hakuna ripoti mpya za kutu ya kahawa karibu na shamba lako kwa siku {days}. Tafadhali endelea kukagua kahawa yako mara moja kwa wiki."
+  },
+  "scout": {
+    "app": "PestWatch inahitaji msaada wako: kuna ripoti zisizo za kawaida karibu nawe. Tafadhali kagua miti 10 ya kahawa leo (angalia chini ya majani ya zamani), kisha jibu 1 ukiona madoa ya kutu au 2 usipoona. Asante kwa kulinda jamii yako.",
+    "sms": "PestWatch: Ripoti zisizo za kawaida karibu nawe. Kagua miti 10 ya kahawa leo. Jibu 1=nimeona kutu 2=sijaona. Asante!",
+    "voice": "Habari, huyu ni PestWatch. Kuna ripoti zisizo za kawaida za kutu ya kahawa karibu na shamba lako. Tafadhali kagua miti 10 ya kahawa leo, chini ya majani ya zamani. Ukiona madoa ya kutu, bonyeza 1. Usipoona, bonyeza 2. Asante kwa kulinda jamii yako."
+  },
+  "ussd": {
+    "menu": "PestWatch\n1. Nimeona kutu\n2. Sijaona\n3. Hali ya eneo\n4. Lugha\n0. Msaada",
+    "thanks_found": "Asante. Ripoti yako inawalinda majirani zako. Muulize afisa wa ugani kuhusu dawa ya kuvu iliyoidhinishwa; usinyunyize kabla ya ushauri.",
+    "thanks_none": "Asante. Tafadhali kagua kahawa yako tena baada ya siku 3.",
+    "status_alert": "ONYO: kutu ya kahawa karibu nawe. Hatari {level}. {action}",
+    "status_watch": "TAHADHARI: ripoti zisizo za kawaida karibu nawe. Kagua miti 10 ya kahawa leo.",
+    "status_quiet": "Hakuna ugonjwa usio wa kawaida karibu nawe. Endelea kukagua kila wiki.",
+    "choose_language": "Chagua lugha:",
+    "help": "PestWatch inakuonya kuhusu kutu ya kahawa karibu na shamba lako. Piga tena kuripoti unachoona, au jibu SMS yetu kwa 1 (nimeona) au 2 (sijaona).",
+    "invalid": "Chaguo si sahihi. Tafadhali piga tena.",
+    "unregistered": "Nambari hii haijasajiliwa na PestWatch. Tafadhali muombe afisa wa ugani akusajili."
+  },
+  "voice_menu": {
+    "no_alert": "Habari, huyu ni PestWatch. Hakuna onyo la kutu ya kahawa karibu na shamba lako kwa sasa.",
+    "menu": "Ukiona kutu kwenye majani ya kahawa, bonyeza 1. Usipoona, bonyeza 2. Kusikiliza tena, bonyeza 9.",
+    "unregistered": "Habari, huyu ni PestWatch. Nambari hii haijasajiliwa. Tafadhali muombe afisa wa ugani akusajili. Kwaheri.",
+    "goodbye": "Kwaheri."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bias": -1.416306549350793,
+  "weights": [
+    0.460537569663059,
+    2.8659222420302677,
+    0.0
+  ],
+  "features": [
+    "scan_llr",
+    "farmer_confirmations",
+    "trap_anomaly"
+  ],
+  "n": 108528,
+  "positives": 28778
+}

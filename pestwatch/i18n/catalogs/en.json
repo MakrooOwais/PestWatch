@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "code": "en",
+    "name": "English",
+    "native_name": "English",
+    "fallback": null,
+    "review_status": "source",
+    "aliases": [
+      "en",
+      "english",
+      "kiingereza",
+      "anglais"
+    ],
+    "decimal": "."
+  },
+  "alert": {
+    "head": "Coffee leaf rust has been reported in your area.",
+    "reports": {
+      "one": "{n} report",
+      "other": "{n} reports"
+    },
+    "farms": {
+      "one": "{n} farm",
+      "other": "{n} farms"
+    },
+    "counts": "{reports} from {farms} in the last {hours} hours.",
+    "risk": "Risk: {level}.",
+    "level": {
+      "HIGH": "HIGH",
+      "MEDIUM": "MEDIUM",
+      "LOW": "LOW"
+    },
+    "action": {
+      "HIGH": "Check your coffee within 24 hours.",
+      "MEDIUM": "Check your coffee within 48 hours.",
+      "LOW": "Check your coffee this week."
+    },
+    "tip": "Check the underside of older leaves for orange, powdery spots. Nearest report: {km} km.",
+    "tip_own": "Check the underside of older leaves for orange, powdery spots. One report is from your farm.",
+    "reply_hint": "After checking, reply 1 if you found rust or 2 if none.",
+    "forecast_head": "Recent weather has favoured coffee leaf rust near you."
+  },
+  "sms": {
+    "template": "PestWatch: Coffee leaf rust near you. {r} reports/{f} farms in {h}h. Risk {level}. Check leaves {when}. Reply 1=found 2=none",
+    "when": {
+      "HIGH": "within 24h",
+      "MEDIUM": "within 48h",
+      "LOW": "this week"
+    },
+    "forecast_template": "PestWatch: Rust weather near you. Risk {level}. Check coffee leaves {when}. Reply 1=found 2=none"
+  },
+  "voice": {
+    "template": "Hello, this is PestWatch. {head} {counts} {risk} {action} {tip} If you find rust, press 1. If you find none, press 2. To hear this again, press 9. Again: {action}"
+  },
+  "reply": {
+    "PEST_FOUND": "Thank you. Your report helps protect your neighbours. Ask your extension officer or cooperative about approved fungicide and pruning; don't spray before you have advice.",
+    "NO_PEST": "Thank you. Please check again in 3 days.",
+    "HELP": "PestWatch: reply 1 = found rust, 2 = none found, STOP = stop alerts, EN/SW/FR = change language.",
+    "STOP": "You will no longer receive PestWatch alerts. Reply START to resume.",
+    "START": "Welcome back. You will receive PestWatch alerts again.",
+    "LANGUAGE": "Language set to English.",
+    "UNKNOWN": "Sorry, we did not understand. Reply HELP for options.",
+    "REFERRAL": "Thank you. Your lead farmer and extension officer have been asked to check your farm. Until then, please don't spray; keep a damaged leaf to show them."
+  },
+  "intents": {
+    "PEST_FOUND": [
+      "1",
+      "yes",
+      "found",
+      "found it",
+      "rust",
+      "leaf rust",
+      "orange spots",
+      "orange powder"
+    ],
+    "NO_PEST": [
+      "2",
+      "no",
+      "none",
+      "nothing",
+      "not found",
+      "no rust",
+      "clean",
+      "didnt find",
+      "did not find"
+    ],
+    "HELP": [
+      "help",
+      "menu",
+      "?"
+    ],
+    "STOP": [
+      "stop",
+      "unsubscribe",
+      "quit"
+    ],
+    "START": [
+      "start",
+      "resume",
+      "subscribe"
+    ],
+    "LANGUAGE": [
+      "language"
+    ],
+    "REFERRAL": [
+      "ask a person",
+      "check my farm",
+      "extension officer",
+      "lead farmer"
+    ]
+  },
+  "ui": {
+    "title": "PestWatch Field",
+    "online": "Online",
+    "offline": "No signal",
+    "language": "Language",
+    "my_farm": "My farm",
+    "connect_once": "Connect once to load farms",
+    "near_signal": "Near the current signal (demo)",
+    "all_farms": "All farms",
+    "step1": "1 · Take a crop photo",
+    "tap_photo": "Tap to photograph a coffee leaf (underside)",
+    "tap_again": "Tap to photograph another leaf",
+    "demo_model": "Demo model output (stand-in for the on-device TFLite model)",
+    "demo_healthy": "Healthy leaf",
+    "demo_early": "Early, faint rust spots",
+    "demo_obvious": "Obvious orange rust",
+    "no_camera": "No camera? Run the model without a photo (demo)",
+    "step2": "2 · On-device result (no internet needed)",
+    "likely": "Likely coffee leaf rust. Your report helps warn neighbouring farms.",
+    "possible": "Possible leaf rust, but not certain. On its own this is too weak to act on; PestWatch combines it with nearby reports.",
+    "unlikely": "No clear sign of leaf rust. Reporting healthy leaves matters too: it tells PestWatch what normal looks like.",
+    "save": "Save report",
+    "step3": "3 · Reports queue",
+    "no_reports": "No reports yet.",
+    "pending": {
+      "one": "{n} report waiting for signal.",
+      "other": "{n} reports waiting for signal."
+    },
+    "auto_sync": "They will sync automatically when you're back online.",
+    "all_synced": "All reports synced.",
+    "sync_now": "Sync now",
+    "sync_failed": "Sync failed; will retry.",
+    "queued": "queued",
+    "synced": "synced",
+    "upload_note": "Only the model's result (~100 bytes) is uploaded, never the photo.",
+    "step4": "4 · My area",
+    "no_status": "No status yet. Sync when you have signal.",
+    "quiet": "QUIET",
+    "quiet_text": "No unusual crop disease reported near you.",
+    "watch": "WATCH",
+    "alert_elsewhere": "ALERT (elsewhere)",
+    "emerging": "Emerging signal near {village}: {r} reports from {f} farms in 72 h.",
+    "outbreak_near": "Outbreak alert near {village}: {r} reports from {f} farms in 72 h.",
+    "live_count": "{n} live report(s) received by the network.",
+    "risk_badge": "{level} RISK",
+    "step5": "5 · After inspecting",
+    "inspect_q": "Did you find rust on your coffee leaves?",
+    "found_btn": "Yes, I found some",
+    "none_btn": "No, none found",
+    "message_label": "Or send a message in any language",
+    "message_ph": "e.g. found rust / nimeona kutu / j'ai trouvé de la rouille",
+    "send": "Send",
+    "you": "You",
+    "pestwatch": "PestWatch",
+    "classes": {
+      "healthy": "Healthy",
+      "leaf_rust": "Coffee leaf rust",
+      "leaf_miner": "Leaf miner",
+      "cercospora": "Brown eye spot (Cercospora)",
+      "phoma": "Phoma leaf spot"
+    },
+    "demo_lookalike": "Leaf miner (look-alike)",
+    "scout_title": "Help check your area",
+    "all_clear_badge": "ALL CLEAR",
+    "offline_reply": "(answered on this phone; it will be sent when you have signal)",
+    "last_updated": "Last updated {when}. You are offline: showing the saved status.",
+    "not_sure_title": "Not sure — ask a person",
+    "not_sure_text": "The model can't tell clearly from this photo, so don't spray because of it. Show the leaf to your lead farmer or extension officer, or take another photo of the underside of the leaf in daylight.",
+    "ask_person_btn": "Ask my lead farmer / extension officer",
+    "referral_msg": "Please ask a person to check my farm"
+  },
+  "all_clear": {
+    "app": "All clear: no new coffee leaf rust reports near you for {days} days. Keep checking your trees once a week.",
+    "sms": "PestWatch: All clear near you, no new coffee rust reports in {days} days. Keep checking weekly.",
+    "voice": "Hello, this is PestWatch. Good news. There have been no new coffee leaf rust reports near your farm for {days} days. Please keep checking your coffee once a week."
+  },
+  "scout": {
+    "app": "PestWatch needs your help: there are unusual reports near you. Please check 10 coffee trees today (look under the older leaves), then reply 1 if you find orange rust spots or 2 if none. Thank you for protecting your community.",
+    "sms": "PestWatch: Unusual reports near you. Please check 10 coffee trees today. Reply 1=rust found 2=none. Thank you!",
+    "voice": "Hello, this is PestWatch. There are unusual coffee leaf rust reports near your farm. Please check 10 coffee trees today, under the older leaves. If you find orange rust spots, press 1. If you find none, press 2. Thank you for protecting your community."
+  },
+  "ussd": {
+    "menu": "PestWatch\n1. I found leaf rust\n2. I found none\n3. Area status\n4. Language\n0. Help",
+    "thanks_found": "Thank you. Your report helps protect your neighbours. Ask your extension officer about approved fungicide; don't spray before advice.",
+    "thanks_none": "Thank you. Please check your coffee again in 3 days.",
+    "status_alert": "ALERT: coffee leaf rust near you. Risk {level}. {action}",
+    "status_watch": "WATCH: unusual reports near you. Check 10 coffee trees today.",
+    "status_quiet": "No unusual crop disease near you. Keep checking weekly.",
+    "choose_language": "Choose language:",
+    "help": "PestWatch warns you about coffee leaf rust near your farm. Dial again to report what you find, or reply to our SMS with 1 (found) or 2 (none).",
+    "invalid": "Invalid choice. Please dial again.",
+    "unregistered": "This number is not registered with PestWatch. Please ask your extension officer to register you."
+  },
+  "voice_menu": {
+    "no_alert": "Hello, this is PestWatch. There are no coffee leaf rust alerts near your farm right now.",
+    "menu": "If you find rust on your coffee leaves, press 1. If you find none, press 2. To hear this again, press 9.",
+    "unregistered": "Hello, this is PestWatch. This number is not registered. Please ask your extension officer to register you. Goodbye.",
+    "goodbye": "Goodbye."
+  }
+}
