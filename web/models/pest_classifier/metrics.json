@@ -1,0 +1,350 @@
+{
+  "fp32": {
+    "accuracy": 0.7377,
+    "macro_f1": 0.6705,
+    "ece_15bin": 0.0634,
+    "nll": 0.7075,
+    "per_class": {
+      "healthy": {
+        "precision": 0.7927,
+        "recall": 0.9353,
+        "f1": 0.8581,
+        "n": 139
+      },
+      "leaf_rust": {
+        "precision": 0.7918,
+        "recall": 0.9278,
+        "f1": 0.8544,
+        "n": 914
+      },
+      "leaf_miner": {
+        "precision": 0.6654,
+        "recall": 0.8037,
+        "f1": 0.728,
+        "n": 438
+      },
+      "cercospora": {
+        "precision": 0.4569,
+        "recall": 0.604,
+        "f1": 0.5202,
+        "n": 149
+      },
+      "phoma": {
+        "precision": 0.9905,
+        "recall": 0.2441,
+        "f1": 0.3917,
+        "n": 426
+      }
+    },
+    "ece_before_temperature": 0.0952,
+    "nll_before_temperature": 0.7316,
+    "temperature": 0.8119,
+    "leaf_rust": {
+      "precision": 0.7918,
+      "recall": 0.9278
+    },
+    "by_source": {
+      "jmuben": {
+        "n": 1654,
+        "accuracy": 0.7219,
+        "macro_f1": 0.6004,
+        "per_class": {
+          "healthy": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "n": 0
+          },
+          "leaf_rust": {
+            "precision": 0.7772,
+            "recall": 0.9787,
+            "f1": 0.8664,
+            "n": 752
+          },
+          "leaf_miner": {
+            "precision": 0.6578,
+            "recall": 0.8075,
+            "f1": 0.725,
+            "n": 400
+          },
+          "cercospora": {
+            "precision": 0.4969,
+            "recall": 0.625,
+            "f1": 0.5536,
+            "n": 128
+          },
+          "phoma": {
+            "precision": 1.0,
+            "recall": 0.1471,
+            "f1": 0.2564,
+            "n": 374
+          }
+        }
+      },
+      "bracol": {
+        "n": 203,
+        "accuracy": 0.7685,
+        "macro_f1": 0.735,
+        "per_class": {
+          "healthy": {
+            "precision": 0.85,
+            "recall": 0.7727,
+            "f1": 0.8095,
+            "n": 22
+          },
+          "leaf_rust": {
+            "precision": 0.8644,
+            "recall": 0.7286,
+            "f1": 0.7907,
+            "n": 70
+          },
+          "leaf_miner": {
+            "precision": 0.7632,
+            "recall": 0.7632,
+            "f1": 0.7632,
+            "n": 38
+          },
+          "cercospora": {
+            "precision": 0.2778,
+            "recall": 0.4762,
+            "f1": 0.3509,
+            "n": 21
+          },
+          "phoma": {
+            "precision": 0.98,
+            "recall": 0.9423,
+            "f1": 0.9608,
+            "n": 52
+          }
+        }
+      },
+      "rocole": {
+        "n": 209,
+        "accuracy": 0.8325,
+        "macro_f1": 0.8215,
+        "per_class": {
+          "healthy": {
+            "precision": 0.7847,
+            "recall": 0.9658,
+            "f1": 0.8659,
+            "n": 117
+          },
+          "leaf_rust": {
+            "precision": 0.9385,
+            "recall": 0.663,
+            "f1": 0.7771,
+            "n": 92
+          },
+          "leaf_miner": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "n": 0
+          },
+          "cercospora": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "n": 0
+          },
+          "phoma": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "n": 0
+          }
+        }
+      }
+    },
+    "size_mb": 6.1,
+    "latency_ms_cpu_batch1": 2.91
+  },
+  "int8": {
+    "accuracy": 0.7338,
+    "macro_f1": 0.6841,
+    "ece_15bin": 0.0968,
+    "nll": 0.7202,
+    "per_class": {
+      "healthy": {
+        "precision": 0.7831,
+        "recall": 0.9353,
+        "f1": 0.8525,
+        "n": 139
+      },
+      "leaf_rust": {
+        "precision": 0.7751,
+        "recall": 0.9048,
+        "f1": 0.8349,
+        "n": 914
+      },
+      "leaf_miner": {
+        "precision": 0.6622,
+        "recall": 0.7968,
+        "f1": 0.7233,
+        "n": 438
+      },
+      "cercospora": {
+        "precision": 0.5894,
+        "recall": 0.5973,
+        "f1": 0.5933,
+        "n": 149
+      },
+      "phoma": {
+        "precision": 0.7806,
+        "recall": 0.284,
+        "f1": 0.4165,
+        "n": 426
+      }
+    },
+    "method": "weight-only int8 (per-channel), float activations",
+    "size_mb": 1.65,
+    "accuracy_delta_vs_fp32": -0.0039,
+    "prediction_agreement_with_fp32": 0.9468,
+    "leaf_rust": {
+      "precision": 0.7751,
+      "recall": 0.9048
+    },
+    "latency_ms_cpu_batch1": 3.04
+  },
+  "dataset": "JMuBEN + JMuBEN2 (Jepkoech et al. 2021, Kenya; CC BY 4.0; via Hugging Face Project-AgML/arabica_coffee_leaf_disease_classification) + BRACOL leaf set (Krohling/Esgario et al. 2019, Brazil; CC BY 4.0; Mendeley doi:10.17632/yy2k5y8mxg.1) + RoCoLe (Parraga-Alava et al. 2019, Ecuador, Robusta; CC BY 4.0; Mendeley doi:10.17632/c5yvn32dzg.2)",
+  "class_counts_raw": {
+    "jmuben": {
+      "healthy": 18983,
+      "leaf_rust": 8336,
+      "leaf_miner": 16978,
+      "cercospora": 7681,
+      "phoma": 6571
+    },
+    "bracol": {
+      "healthy": 142,
+      "leaf_rust": 465,
+      "leaf_miner": 253,
+      "cercospora": 136,
+      "phoma": 346
+    },
+    "rocole": {
+      "healthy": 787,
+      "leaf_rust": 598,
+      "leaf_miner": 0,
+      "cercospora": 0,
+      "phoma": 0
+    }
+  },
+  "jmuben_clusters": 826,
+  "jmuben_clusters_per_split": {
+    "train": {
+      "healthy": 7,
+      "leaf_rust": 279,
+      "leaf_miner": 155,
+      "cercospora": 48,
+      "phoma": 101
+    },
+    "val": {
+      "healthy": 0,
+      "leaf_rust": 69,
+      "leaf_miner": 29,
+      "cercospora": 9,
+      "phoma": 25
+    },
+    "test": {
+      "healthy": 0,
+      "leaf_rust": 47,
+      "leaf_miner": 25,
+      "cercospora": 8,
+      "phoma": 24
+    }
+  },
+  "split_counts": {
+    "train": {
+      "jmuben": {
+        "healthy": 700,
+        "leaf_rust": 4936,
+        "leaf_miner": 5840,
+        "cercospora": 1881,
+        "phoma": 3638
+      },
+      "bracol": {
+        "healthy": 98,
+        "leaf_rust": 325,
+        "leaf_miner": 177,
+        "cercospora": 94,
+        "phoma": 242
+      },
+      "rocole": {
+        "healthy": 554,
+        "leaf_rust": 417,
+        "leaf_miner": 0,
+        "cercospora": 0,
+        "phoma": 0
+      }
+    },
+    "val": {
+      "jmuben": {
+        "healthy": 0,
+        "leaf_rust": 1104,
+        "leaf_miner": 464,
+        "cercospora": 144,
+        "phoma": 378
+      },
+      "bracol": {
+        "healthy": 22,
+        "leaf_rust": 70,
+        "leaf_miner": 38,
+        "cercospora": 21,
+        "phoma": 52
+      },
+      "rocole": {
+        "healthy": 116,
+        "leaf_rust": 89,
+        "leaf_miner": 0,
+        "cercospora": 0,
+        "phoma": 0
+      }
+    },
+    "test": {
+      "jmuben": {
+        "healthy": 0,
+        "leaf_rust": 752,
+        "leaf_miner": 400,
+        "cercospora": 128,
+        "phoma": 374
+      },
+      "bracol": {
+        "healthy": 22,
+        "leaf_rust": 70,
+        "leaf_miner": 38,
+        "cercospora": 21,
+        "phoma": 52
+      },
+      "rocole": {
+        "healthy": 117,
+        "leaf_rust": 92,
+        "leaf_miner": 0,
+        "cercospora": 0,
+        "phoma": 0
+      }
+    }
+  },
+  "splits": {
+    "train": 18902,
+    "val": 2498,
+    "test": 2066
+  },
+  "leakage": {
+    "val": {
+      "jmuben_near_dup_of_train_cos_gt_0.95": 0,
+      "of": 2090,
+      "median_max_cos": 0.9036
+    },
+    "test": {
+      "jmuben_near_dup_of_train_cos_gt_0.95": 0,
+      "of": 1654,
+      "median_max_cos": 0.9022
+    }
+  },
+  "dedupe": "JMuBEN near-duplicate clusters (dihedral-invariant MobileNetV3-Large embedding, cosine > 0.95; healthy 0.97, single linkage) kept within one split; capped at 40/cluster (train) and 16/cluster (val/test); healthy caps (100, 0). BRACOL: byte-identical files grouped; RoCoLe: grouped by plant; BRACOL and RoCoLe oversampled x4 in training.",
+  "train_seconds": 374.5,
+  "epochs": 8,
+  "device": "mps",
+  "best_val_macro_f1": 0.7176
+}

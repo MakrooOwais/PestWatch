@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PestWatch — extension officer view</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .ext main { grid-template-columns: minmax(0, 2.6fr) minmax(300px, 1fr); grid-template-areas: "tasks detail"; }
+  .tasks { grid-area: tasks; overflow-x: auto; }
+  .detail { grid-area: detail; display: flex; flex-direction: column; gap: 12px; }
+  table.tl { border-collapse: collapse; width: 100%; font-size: 12px; font-variant-numeric: tabular-nums; }
+  table.tl th { text-align: left; color: var(--text-muted); font-weight: 600; padding: 6px; border-bottom: 1px solid var(--hairline); white-space: nowrap; }
+  table.tl tr.row td { white-space: nowrap; border-bottom: 0; padding-bottom: 2px; }
+  table.tl tr.actrow td { padding-top: 0; cursor: pointer; }
+  table.tl tr.actrow.sel td { background: #24282f; }
+  table.tl td { padding: 7px 6px; border-bottom: 1px solid var(--hairline); vertical-align: top; color: var(--text-secondary); }
+  table.tl tr.row { cursor: pointer; }
+  table.tl tr.row:hover td { background: #202020; }
+  table.tl tr.sel td { background: #24282f; }
+  table.tl td b { color: var(--text-primary); }
+  .status { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; font-size: 11px; padding: 2px 8px; border-radius: 10px; color: #fff; white-space: nowrap; }
+  .status.ALERT { background: var(--critical); }
+  .status.WATCH { background: #8a6400; }
+  .status.QUIET { background: #2f4f2f; }
+  .action { color: var(--text-primary); font-weight: 600; }
+  .sub2 { color: var(--text-muted); font-size: 11px; }
+  .up { color: #ff8a8a; } .down { color: #6fcf6f; }
+  #vmap { width: 100%; height: 300px; display: block; }
+  ul.visits { list-style: none; margin: 0; padding: 0; max-height: 300px; overflow-y: auto; }
+  ul.visits li { padding: 7px 0; border-bottom: 1px solid var(--hairline); font-size: 13px; color: var(--text-secondary); display: grid; grid-template-columns: 1fr auto; gap: 6px; }
+  ul.visits li b { color: var(--text-primary); }
+  .why { white-space: nowrap; align-self: start; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 8px; color: #fff; }
+  .why.HIGH { background: var(--critical); } .why.FOUND { background: #b03030; } .why.SILENT { background: #4a4a45; }
+  .privacy { font-size: 12px; color: var(--text-muted); border-left: 3px solid var(--warning); padding: 6px 10px; margin: 0 20px 14px; }
+  .summary { display: flex; gap: 18px; flex-wrap: wrap; color: var(--text-secondary); font-size: 13px; margin-bottom: 8px; }
+  .summary b { color: var(--text-primary); font-size: 16px; }
+  @media print {
+    body, .viz-root { background: #fff !important; color: #000 !important; }
+    header .controls, .timeline, .detail, .privacy button { display: none !important; }
+    .card { border: 1px solid #999; background: #fff; }
+    table.tl td, table.tl th, table.tl td b, .action { color: #000 !important; }
+    .ext main { grid-template-columns: 1fr; grid-template-areas: "tasks"; }
+  }
+  @media (max-width: 1100px) { .ext main { grid-template-columns: 1fr; grid-template-areas: "tasks" "detail"; } }
+</style>
+</head>
+<body>
+<div class="viz-root ext">
+  <header>
+    <div class="brand">
+      <span class="logo" aria-hidden="true">◉</span>
+      <div>
+        <h1>PestWatch · Extension officer</h1>
+        <p class="sub" id="subtitle">Village task list</p>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="csv">⬇ Export CSV</button>
+      <button id="print">🖨 Print</button>
+      <a class="link" href="index.html">Dashboard ↗</a>
+    </div>
+  </header>
+
+  <section class="timeline" aria-label="Today">
+    <button id="play" aria-label="Play">▶</button>
+    <select id="speed" aria-label="Playback speed">
+      <option value="1">1 day/s</option>
+      <option value="2" selected>2 days/s</option>
+    </select>
+    <div class="track"><input id="slider" type="range" min="0" max="1" value="0" aria-label="Today"></div>
+    <div class="clock"><strong id="day">Day 0</strong><span id="clocksub"></span></div>
+  </section>
+
+  <p class="privacy">Farm-level details are for authorised extension staff only. The public view (<code>/api/public/risk</code>)
+    shows coarse ~1 km grid cells with no farm identities, and only for farmers who consented to share.</p>
+
+  <main>
+    <section class="card tasks">
+      <div class="cardhead"><h2>Villages ranked by urgency</h2></div>
+      <div class="summary" id="summary"></div>
+      <table class="tl" id="tasks"></table>
+    </section>
+    <aside class="detail">
+      <div class="card">
+        <div class="cardhead"><h2 id="dtitle">Village</h2><div class="legend" id="dlegend"></div></div>
+        <canvas id="vmap" aria-label="Village map"></canvas>
+        <div id="maptip" class="tooltip" hidden></div>
+      </div>
+      <div class="card">
+        <div class="cardhead"><h2>Farms to visit</h2></div>
+        <ul class="visits" id="visits"></ul>
+      </div>
+    </aside>
+  </main>
+  <footer>Simulated region and season; figures are model outputs. Fungicide estimate = hectares at HIGH/MEDIUM risk × dose per ha (assumed dose).</footer>
+</div>
+<script src="data/scenario.js"></script>
+<script src="data/i18n.js"></script>
+<script src="shared.js"></script>
+<script src="extension.js"></script>
+<script src="offline.js"></script>
+</body>
+</html>

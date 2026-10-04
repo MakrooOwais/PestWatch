@@ -1,0 +1,44 @@
+[
+ {
+  "file": "leaf_rust_1.jpg",
+  "label": "leaf_rust",
+  "index": 1671,
+  "source_id": "bracol:150",
+  "fp32_confidence": 0.992
+ },
+ {
+  "file": "leaf_rust_2.jpg",
+  "label": "leaf_rust",
+  "index": 2061,
+  "source_id": "rocole:C12P8H2.jpg",
+  "fp32_confidence": 0.995
+ },
+ {
+  "file": "leaf_miner_1.jpg",
+  "label": "leaf_miner",
+  "index": 1768,
+  "source_id": "bracol:1072",
+  "fp32_confidence": 0.909
+ },
+ {
+  "file": "phoma_1.jpg",
+  "label": "phoma",
+  "index": 1696,
+  "source_id": "bracol:247",
+  "fp32_confidence": 0.996
+ },
+ {
+  "file": "healthy_1.jpg",
+  "label": "healthy",
+  "index": 1682,
+  "source_id": "bracol:198",
+  "fp32_confidence": 0.973
+ },
+ {
+  "file": "healthy_2.jpg",
+  "label": "healthy",
+  "index": 1914,
+  "source_id": "rocole:C3P30H1.jpg",
+  "fp32_confidence": 0.997
+ }
+]

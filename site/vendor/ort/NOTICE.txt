@@ -1,0 +1,4 @@
+onnxruntime-web 1.19.2 (wasm-only build: ort.wasm.min.js, ort-wasm-simd-threaded.{mjs,wasm})
+Copyright (c) Microsoft Corporation. Licensed under the MIT License.
+https://github.com/microsoft/onnxruntime  (npm: onnxruntime-web, "license": "MIT")
+Vendored so the PestWatch field app runs fully offline.

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PestWatch — community pest early warning</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="viz-root">
+  <header>
+    <div class="brand">
+      <span class="logo" aria-hidden="true">◉</span>
+      <div>
+        <h1>PestWatch</h1>
+        <p class="sub" id="subtitle">Hyperlocal AI pest early-warning network</p>
+      </div>
+    </div>
+    <div class="controls" role="toolbar" aria-label="View controls">
+      <div class="seg" role="radiogroup" aria-label="Map layer">
+        <button data-layer="system" class="on" role="radio" aria-checked="true">What PestWatch sees</button>
+        <button data-layer="truth" role="radio" aria-checked="false">Ground truth</button>
+      </div>
+      <div class="seg" role="radiogroup" aria-label="Scenario">
+        <button data-arm="pw" class="on" role="radio" aria-checked="true">With PestWatch</button>
+        <button data-arm="cf" role="radio" aria-checked="false">Without</button>
+      </div>
+      <button id="story" class="primary">▶ Guided demo</button>
+      <a class="link" href="extension.html">Extension view ↗</a>
+      <a class="link" href="field.html" target="_blank" rel="noopener">Field app ↗</a>
+    </div>
+  </header>
+
+  <section class="timeline" aria-label="Timeline">
+    <button id="play" aria-label="Play">▶</button>
+    <select id="speed" aria-label="Playback speed">
+      <option value="1">1 day/s</option>
+      <option value="2" selected>2 days/s</option>
+      <option value="4">4 days/s</option>
+    </select>
+    <div class="track">
+      <input id="slider" type="range" min="0" max="1" value="0" aria-label="Day of season">
+      <div id="markers" class="markers"></div>
+    </div>
+    <div class="clock"><strong id="day">Day 0</strong><span id="clocksub"></span></div>
+  </section>
+
+  <main>
+    <section class="mapcard card">
+      <div class="cardhead">
+        <h2 id="maptitle">Region map</h2>
+        <div id="legend" class="legend"></div>
+      </div>
+      <div class="mapwrap"><canvas id="map" aria-label="Map of farms, reports and detected clusters"></canvas>
+        <div id="caption" class="caption" hidden></div>
+        <div id="maptip" class="tooltip" hidden></div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="kpis" id="kpis"></div>
+
+      <div class="card phonecard">
+        <div class="cardhead">
+          <h2>Farmer's phone</h2>
+          <div class="phonectl">
+            <div class="seg small" role="radiogroup" aria-label="Language" id="langSeg"></div>
+            <div class="seg small" role="radiogroup" aria-label="Channel" id="chanSeg">
+              <button data-chan="app">App</button>
+              <button data-chan="sms">SMS</button>
+              <button data-chan="voice">Voice</button>
+            </div>
+          </div>
+        </div>
+        <p class="pref" id="pref"></p>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen" id="phone"></div>
+        </div>
+        <p class="hint">Click any farm on the map to see its phone.</p>
+      </div>
+
+      <div class="card feedcard">
+        <div class="cardhead"><h2>Event feed</h2></div>
+        <ol id="feed" class="feed" aria-live="polite"></ol>
+      </div>
+    </aside>
+
+    <section class="charts card">
+      <div class="chartbox">
+        <div class="cardhead">
+          <h2>Farms with visible damage</h2>
+          <div class="legend">
+            <span class="key"><i class="line s1"></i>With PestWatch</span>
+            <span class="key"><i class="line s2"></i>Without</span>
+          </div>
+        </div>
+        <canvas id="chartDamage" aria-label="Share of farms with visible damage over time"></canvas>
+      </div>
+      <div class="chartbox">
+        <div class="cardhead">
+          <h2>Outbreak probability (fused)</h2>
+          <div class="legend">
+            <span class="key"><i class="line s1"></i>P(outbreak)</span>
+            <span class="key"><i class="line crit"></i>Alert</span>
+            <span class="key"><i class="line warn"></i>Watch</span>
+          </div>
+        </div>
+        <canvas id="chartProb" aria-label="Fused outbreak probability over time"></canvas>
+      </div>
+      <div class="chartbox">
+        <div class="cardhead">
+          <h2>Rust weather risk (forecast)</h2>
+          <div class="legend"><span class="key"><i class="line s1"></i>Warm, wet conditions index (0–1)</span></div>
+        </div>
+        <canvas id="chartTrap" aria-label="Rust weather risk index per day"></canvas>
+      </div>
+      <div id="charttip" class="tooltip" hidden></div>
+      <details class="tableview">
+        <summary>Data table</summary>
+        <div id="table"></div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    Simulated region and outbreak; parameters in <code>pestwatch/config.py</code>. Numbers are model outputs, not field results.
+    <span id="evalnote"></span>
+  </footer>
+</div>
+<script src="data/scenario.js"></script>
+<script src="data/i18n.js"></script>
+<script src="shared.js"></script>
+<script src="app.js"></script>
+<script src="offline.js"></script>
+</body>
+</html>

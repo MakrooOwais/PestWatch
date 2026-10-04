@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a19">
+<link rel="manifest" href="manifest.webmanifest">
+<title>PestWatch Field</title>
+<style>
+  :root { --ink: #0b0b0b; --ink2: #52514e; --line: #e4e3de; --bg: #f4f3ef; --card: #fff;
+          --blue: #2a78d6; --critical: #d03b3b; --good: #0a7d0a; --warn: #8a6400; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 system-ui, -apple-system, Roboto, sans-serif; background: var(--bg); color: var(--ink); }
+  header { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center;
+           padding: 12px 16px; background: #1a1a19; color: #fff; }
+  header h1 { font-size: 17px; margin: 0; }
+  .pill { width: auto; white-space: nowrap; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; border: 0; cursor: pointer; }
+  .pill.on { background: #0ca30c; color: #fff; }
+  .pill.off { background: #4a4a45; color: #fff; }
+  main { max-width: 480px; margin: 0 auto; padding: 12px; display: grid; gap: 12px; }
+  .card { background: var(--card); border-radius: 14px; padding: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+  .card h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: var(--ink2); margin: 0 0 10px; }
+  label { display: block; font-size: 13px; color: var(--ink2); margin-bottom: 4px; }
+  select, button { font: inherit; width: 100%; padding: 11px 12px; border-radius: 10px; border: 1px solid var(--line); background: #fff; }
+  button.primary { background: var(--blue); color: #fff; border: 0; font-weight: 600; }
+  button:disabled { opacity: .5; }
+  .row { display: flex; gap: 8px; }
+  .row > * { flex: 1; }
+  .capture { display: grid; place-items: center; border: 2px dashed var(--line); border-radius: 12px; min-height: 160px;
+             cursor: pointer; overflow: hidden; color: var(--ink2); text-align: center; padding: 8px; }
+  .capture img { max-width: 100%; max-height: 260px; border-radius: 8px; }
+  input[type=file] { display: none; }
+  .bars { display: grid; gap: 6px; margin-top: 8px; }
+  .bar { display: grid; grid-template-columns: 130px 1fr 42px; gap: 8px; align-items: center; font-size: 13px; }
+  .bar .track { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+  .bar .track i { display: block; height: 100%; background: var(--blue); border-radius: 4px; }
+  .bar b { text-align: right; font-variant-numeric: tabular-nums; }
+  .verdict { font-size: 18px; font-weight: 700; }
+  .muted { color: var(--ink2); font-size: 13px; }
+  .note { font-size: 12px; color: var(--ink2); background: #f0efec; padding: 8px 10px; border-radius: 8px; margin-top: 8px; }
+  ul.queue { list-style: none; padding: 0; margin: 0; }
+  ul.queue li { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .st { font-weight: 600; }
+  .st.q { color: var(--warn); }
+  .st.s { color: var(--good); }
+  .alert { border-left: 5px solid var(--critical); }
+  .badge { display: inline-block; color: #fff; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+  .badge.HIGH { background: var(--critical); }
+  .badge.MEDIUM { background: #b4532c; }
+  .badge.LOW { background: var(--warn); }
+  .badge.WATCH { background: var(--warn); }
+  .badge.QUIET { background: var(--good); }
+  .hdr { display: flex; gap: 8px; align-items: center; }
+  .langsel { width: auto; padding: 4px 8px; font-size: 13px; border-radius: 12px; }
+  input[type=text] { font: inherit; padding: 11px 12px; border-radius: 10px; border: 1px solid var(--line); min-width: 0; }
+  ul.thread { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; }
+  ul.thread li { padding: 8px 10px; border-radius: 12px; font-size: 14px; max-width: 85%; }
+  ul.thread li.me { background: var(--blue); color: #fff; justify-self: end; border-bottom-right-radius: 3px; }
+  ul.thread li.pw { background: #f0efec; justify-self: start; border-bottom-left-radius: 3px; }
+  ul.thread li small { display: block; opacity: .75; font-size: 11px; margin-top: 2px; }
+  .unsure { margin-top: 10px; border: 2px solid #8a6400; background: #fff8e6; border-radius: 10px; padding: 10px 12px; }
+  .unsure b { color: #8a6400; }
+  .unsure p { margin: 6px 0 8px; font-size: 13px; }
+  .langs { display: flex; gap: 6px; margin-top: 8px; }
+  .langs button { width: auto; padding: 4px 10px; font-size: 12px; }
+  .langs button.on { border-color: var(--blue); color: var(--blue); font-weight: 600; }
+</style>
+</head>
+<body>
+<header>
+  <h1 data-i18n="title">PestWatch Field</h1>
+  <div class="hdr">
+    <select id="lang" aria-label="Language" class="langsel"></select>
+    <button id="net" class="pill on" title="Toggle to simulate losing signal">● Online</button>
+  </div>
+</header>
+<main>
+  <section class="card">
+    <label for="farm" data-i18n="my_farm">My farm</label>
+    <select id="farm"></select>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="step1">1 · Take a crop photo</h2>
+    <label class="capture" id="captureBox" for="photo"><span>📷 <span data-i18n="tap_photo">Tap to photograph a coffee leaf (underside)</span></span></label>
+    <input id="photo" type="file" accept="image/*" capture="environment">
+    <div style="margin-top:10px">
+      <label for="demo" data-i18n="demo_model">Demo model output</label>
+      <select id="demo">
+        <option value="healthy" data-i18n="demo_healthy">Healthy leaf</option>
+        <option value="early" selected data-i18n="demo_early">Early, faint rust spots</option>
+        <option value="obvious" data-i18n="demo_obvious">Obvious orange rust</option>
+        <option value="lookalike" data-i18n="demo_lookalike">Leaf miner (look-alike)</option>
+      </select>
+    </div>
+    <button id="nophoto" style="margin-top:8px" data-i18n="no_camera">No camera?</button>
+  </section>
+
+  <section class="card" id="resultCard" hidden>
+    <h2 data-i18n="step2">2 · On-device result</h2>
+    <div class="verdict" id="verdict"></div>
+    <div class="muted" id="modelInfo"></div>
+    <div class="bars" id="bars"></div>
+    <div class="note" id="explain"></div>
+    <div class="unsure" id="notSure" hidden>
+      <b data-i18n="not_sure_title">Not sure — ask a person</b>
+      <p data-i18n="not_sure_text"></p>
+      <button id="askPerson" data-i18n="ask_person_btn">Ask my lead farmer / extension officer</button>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button class="primary" id="save" data-i18n="save">Save report</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="step3">3 · Reports queue</h2>
+    <ul class="queue" id="queue"></ul>
+    <p class="muted" id="qnote"></p>
+    <div class="row"><button id="sync" data-i18n="sync_now">Sync now</button></div>
+    <p class="muted" data-i18n="upload_note">Only the model's result is uploaded, never the photo.</p>
+  </section>
+
+  <section class="card" id="statusCard">
+    <h2 data-i18n="step4">4 · My area</h2>
+    <div id="status" class="muted"></div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="step5">5 · After inspecting</h2>
+    <p data-i18n="inspect_q">Did you find rust on your coffee leaves?</p>
+    <div class="row">
+      <button id="found" data-i18n="found_btn">Yes, I found some</button>
+      <button id="none" data-i18n="none_btn">No, none found</button>
+    </div>
+    <label for="msg" style="margin-top:12px" data-i18n="message_label">Or send a message in any language</label>
+    <div class="row">
+      <input id="msg" type="text" data-i18n-ph="message_ph" style="flex:3">
+      <button id="send" data-i18n="send" style="flex:1">Send</button>
+    </div>
+    <ul class="thread" id="thread"></ul>
+  </section>
+</main>
+<script src="data/i18n.js"></script>
+<script src="vendor/ort/ort.wasm.min.js"></script>
+<script src="model.js"></script>
+<script src="reply_parser.js"></script>
+<script src="data/live_demo.js"></script>
+<script src="static_api.js"></script>
+<script src="field.js"></script>
+</body>
+</html>
